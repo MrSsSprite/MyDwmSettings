@@ -1,2 +1,4 @@
 patches/
 *.o
+*.orig
+*.rej
