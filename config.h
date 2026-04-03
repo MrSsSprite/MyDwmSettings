@@ -156,6 +156,11 @@ static const Key keys[] =
 	TAGKEYS(                         XK_8,                      7)
 	TAGKEYS(                         XK_9,                      8)
 	{ MODKEY|ShiftMask,              XK_q,       quit,          {0} },
+
+   /* Custom Operations */
+   { ControlMask|ShiftMask,         XK_1,       spawn,         SHCMD("fcitx5-remote -s keyboard-us") },
+   { ControlMask|ShiftMask,         XK_2,       spawn,         SHCMD("fcitx5-remote -s shuangpin") },
+   { ControlMask|ShiftMask,         XK_3,       spawn,         SHCMD("fcitx5-remote -s mozc") },
 };
 
 /* button definitions */
