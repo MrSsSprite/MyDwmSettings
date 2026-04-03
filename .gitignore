@@ -2,3 +2,7 @@ patches/
 *.o
 *.orig
 *.rej
+
+yay/
+
+/dwm
