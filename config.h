@@ -1,4 +1,6 @@
 /* See LICENSE file for copyright and license details. */
+#define SCRATCHPADNAME "scratchpad"
+static const char scratchpadname[] = SCRATCHPADNAME;
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -42,6 +44,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+   { "com.mitchellh.ghostty", NULL,       scratchpadname, 0,         1,          -1 },
 };
 
 /* layout(s) */
@@ -86,9 +89,17 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+//static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "ghostty", "+new-window", NULL };
+//static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[] =
+{
+   "ghostty",
+   "--title=" SCRATCHPADNAME,
+   "--window-width=128", "--window-height=32",
+   "--gtk-single-instance=false",
+   NULL
+};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -164,4 +175,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
